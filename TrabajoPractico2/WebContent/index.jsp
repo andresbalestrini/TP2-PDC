@@ -18,6 +18,6 @@
 <body>
 <script type="text/javascript">crear_productos()</script>
 </br>
-<button onclick="">Finalizar compra</button>
+<a href="./resumen.jsp">Finalizar compra</a>
 </body>
 </html>

@@ -66,11 +66,9 @@ function crear_productos() {
 function add(tag) {
 	console.log("add");
 	var nombre = $(tag).closest("tr").find("td:eq(0)").html();
+	var descripcion = $(tag).closest("tr").find("td:eq(1)").html();
 	var precio = $(tag).closest("tr").find("td:eq(2)").html();
-	var cant = $(tag).closest("tr").find("td:eq(3) [name=cantidad]").val();
-	console.log(nombre);
-	console.log(precio);
-	console.log(cant);
+	var cant = $(tag).closest("tr").find("td:eq(3) [name=cantidad]").val();	
 	sessionStorage.setItem(nombre, cant);
 	$.ajax({
 		url : "./index.jsp",
@@ -82,10 +80,13 @@ function add(tag) {
 		}),
 		datatype : "html",
 		error : function(hr) {
-
+			console.log("error");
+			console.log(hr.responseText);
 		},
 		success : function(html) {
-			
+			console.log("seccess");
+			console.log(html);
+			window.location.href="index.jsp";
 		}
 	});
 }
@@ -102,10 +103,13 @@ function eliminar(tag) {
 		}),
 		datatype : "html",
 		error : function(hr) {
-
+			console.log("error");
+			console.log(hr.responseText);
 		},
 		success : function(html) {
-			
+			console.log("success");
+			console.log(html);
+			window.location.href="index.jsp";
 		}
 	});
 }
@@ -114,13 +118,16 @@ function resumen() {
 	console.log("resumen");
 	$.ajax({
 		url : "./resumen.jsp",
-		type : "get",		
+		type : "GET",		
 		datatype : "html",
 		error : function(hr) {
-
+			console.log("error");
+			console.log(hr.responseText);
 		},
 		success : function(html) {
-			
+			console.log("seccess");
+			console.log(html);
+			//$("body").html(html);
 		}
 	});
 }

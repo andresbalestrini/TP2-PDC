@@ -30,24 +30,29 @@ public class ResumenSessionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
 		HttpSession session = request.getSession(true);
-		out.println("<!DOCTYPE html>");
-		out.println("<html>");
-		out.println("<head>");
-		out.println("<meta http-equiv=\"Content-Type\" content=\"text/html\">");
-		out.println("<meta charset=\"UTF-8\">");
-		out.println("<script type=\"text/javascript\" src=\"./js/jquery.js\"></script>");
-		out.println("<script type=\"text/javascript\" src=\"./js/controls.js\"></script>");
-		out.println(
-				"<script type=\"text/javascript\"\n" + "	src=\"./bootstrap.3.3.7/js/bootstrap.min.js\"></script>");
-		out.println("<link rel=\"stylesheet\" type=\"text/css\"\n"
-				+ "	href=\"./bootstrap.3.3.7/content/bootstrap.min.css\">");
-		out.println("<link rel=\"stylesheet\" type=\"text/css\"\n"
-				+ "	href=\"./bootstrap.3.3.7/content/bootstrap-theme.min.css\">");
-		out.println("</head>");
-		out.println("<body>");
+		// out.println("<!DOCTYPE html>");
+		// out.println("<html>");
+		// out.println("<head>");
+		// out.println("<meta http-equiv=\"Content-Type\" content=\"text/html\">");
+		// out.println("<meta charset=\"UTF-8\">");
+		// out.println("<script type=\"text/javascript\"
+		// src=\"./js/jquery.js\"></script>");
+		// out.println("<script type=\"text/javascript\"
+		// src=\"./js/controls.js\"></script>");
+		// out.println(
+		// "<script type=\"text/javascript\"\n" + "
+		// src=\"./bootstrap.3.3.7/js/bootstrap.min.js\"></script>");
+		// out.println("<link rel=\"stylesheet\" type=\"text/css\"\n"
+		// + " href=\"./bootstrap.3.3.7/content/bootstrap.min.css\">");
+		// out.println("<link rel=\"stylesheet\" type=\"text/css\"\n"
+		// + " href=\"./bootstrap.3.3.7/content/bootstrap-theme.min.css\">");
+		// out.println("</head>");
+		// out.println("<body>");
+		// out.println("<h1>Resumen de pedidos</h1>");
 		out.println("<table>");
 		out.println("<colgroup>");
 		out.println("<col width=\"220px\"/>");
@@ -79,11 +84,10 @@ public class ResumenSessionServlet extends HttpServlet {
 		out.println("<tr>");
 		out.println("</tbody>");
 		out.println("</table>");
-		out.println("</br>");
-		out.println("</body>");
-		out.println("</html>");
+		// out.println("</br>");
+		// out.println("</body>");
+		// out.println("</html>");
 		out.close();
-
 	}
 
 	/**
@@ -93,6 +97,7 @@ public class ResumenSessionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
+
 	}
 
 }
