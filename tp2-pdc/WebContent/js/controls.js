@@ -18,19 +18,23 @@ function crear_productos() {
 		var array = [ {
 			"nombre" : "medias",
 			"desc" : "Medias de boca juniors",
-			"precio" : "33.00"
+			"precio" : "33"
 		}, {
 			"nombre" : "buzo",
 			"desc" : "Buzo de boca juniors",
-			"precio" : "100.00"
+			"precio" : "100"
 		}, {
 			"nombre" : "Remera",
 			"desc" : "Remera de boca juniors",
-			"precio" : "500.00"
+			"precio" : "500"
 		}, {
 			"nombre" : "pantalones",
 			"desc" : "pantalones de boca juniors",
-			"precio" : "200.00"
+			"precio" : "200"
+		}, {
+			"nombre" : "botines",
+			"desc" : "botines de boca juniors",
+			"precio" : "1200"
 		} ];
 		localStorage.setItem("productos", JSON.stringify(array));
 	}
@@ -45,7 +49,7 @@ function crear_productos() {
 			cadena += "<td>" + data[i].nombre + "</td>";
 			cadena += "<td>" + data[i].desc + "</td>";
 			cadena += "<td>" + data[i].precio + "</td>";
-			cadena += "<td><input type=\"number\" value="
+			cadena += "<td><input type=\"number\" name=\"cantidad\" value="
 					+ sessionStorage.getItem(data[i].nombre) + "></td>";
 			cadena += "<td><a onclick=\"eliminar(this)\">Eliminar</a></td>";
 			cadena += "</tr>";
@@ -60,7 +64,7 @@ function crear_productos() {
 	}
 	cadena += "</table>";
 
-	$("body").append(cadena);
+	$("#grilla").prepend(cadena);
 }
 
 function add(tag) {
@@ -68,10 +72,10 @@ function add(tag) {
 	var nombre = $(tag).closest("tr").find("td:eq(0)").html();
 	var descripcion = $(tag).closest("tr").find("td:eq(1)").html();
 	var precio = $(tag).closest("tr").find("td:eq(2)").html();
-	var cant = $(tag).closest("tr").find("td:eq(3) [name=cantidad]").val();	
+	var cant = $(tag).closest("tr").find("td:eq(3) [name=cantidad]").val();
 	sessionStorage.setItem(nombre, cant);
 	$.ajax({
-		url : "./index.jsp",
+		url : "http://localhost:8080/tp2-pdc/ProductosSessionServlet",
 		type : "post",
 		data : $.param({
 			"nombre" : nombre,
@@ -86,7 +90,7 @@ function add(tag) {
 		success : function(html) {
 			console.log("seccess");
 			console.log(html);
-			window.location.href="index.jsp";
+			window.location.href = "index.jsp";
 		}
 	});
 }
@@ -96,7 +100,7 @@ function eliminar(tag) {
 	var nombre = $(tag).closest("tr").find("td:eq(0)").html();
 	sessionStorage.removeItem(nombre);
 	$.ajax({
-		url : "./index.jsp",
+		url : "http://localhost:8080/tp2-pdc/ProductosSessionServlet",
 		type : "post",
 		data : $.param({
 			"delAttrName" : nombre
@@ -109,7 +113,9 @@ function eliminar(tag) {
 		success : function(html) {
 			console.log("success");
 			console.log(html);
-			window.location.href="index.jsp";
+			$(tag).closest("tr").find("td:eq(3) [name=cantidad]").val("");
+			$(tag).closest("tr").find("td:eq(4)").html("Añadir al carro");
+			$(tag).closest("tr").find("td:eq(4)").attr("onclick","add(this)");
 		}
 	});
 }
@@ -117,17 +123,20 @@ function eliminar(tag) {
 function resumen() {
 	console.log("resumen");
 	$.ajax({
-		url : "./resumen.jsp",
-		type : "GET",		
+		url : "http://localhost:8080/tp2-pdc/ResumenSessionServlet",
+		type : "get",
 		datatype : "html",
 		error : function(hr) {
 			console.log("error");
 			console.log(hr.responseText);
+			$("#grilla").prop("hidden", true);
+			$("#resumen").html(hr.responseText);
 		},
 		success : function(html) {
 			console.log("seccess");
 			console.log(html);
-			//$("body").html(html);
+			$("#grilla").prop("hidden", true);
+			$("#resumen").html(html);
 		}
 	});
 }

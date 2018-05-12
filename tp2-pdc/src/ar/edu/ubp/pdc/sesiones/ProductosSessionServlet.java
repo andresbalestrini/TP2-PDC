@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class IndexSessionServlet
+ * Servlet implementation class ProductosSessionServlet
  */
-@WebServlet("/index.jsp")
-public class IndexSessionServlet extends HttpServlet {
+@WebServlet("/ProductosSessionServlet")
+public class ProductosSessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public IndexSessionServlet() {
+	public ProductosSessionServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,11 +47,10 @@ public class IndexSessionServlet extends HttpServlet {
 			String desc = request.getParameter("descripcion");
 			String valor = request.getParameter("precio");
 
-			Producto a = new Producto(nom, desc, Integer.parseInt(valor));
+			Producto a = new Producto(nom, desc, Integer.parseInt(valor.trim()));
 			session.setAttribute(nom, a);
 		}
 		response.sendRedirect("./index.jsp");
-
 	}
 
 }
