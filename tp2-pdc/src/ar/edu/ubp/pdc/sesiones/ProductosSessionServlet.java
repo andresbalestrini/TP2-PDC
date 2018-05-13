@@ -46,8 +46,9 @@ public class ProductosSessionServlet extends HttpServlet {
 			String nom = request.getParameter("nombre");
 			String desc = request.getParameter("descripcion");
 			String valor = request.getParameter("precio");
+			String cantidad = request.getParameter("cantidad");
 
-			Producto a = new Producto(nom, desc, Integer.parseInt(valor.trim()));
+			Producto a = new Producto(nom, desc, Float.parseFloat(valor.trim()), Integer.parseInt(cantidad));
 			session.setAttribute(nom, a);
 		}
 		response.sendRedirect("./index.jsp");

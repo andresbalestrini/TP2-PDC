@@ -43,11 +43,11 @@ public class ResumenSessionServlet extends HttpServlet {
 		out.println("</colgroup>");
 		out.println("<thead>");
 		out.println("<tr>");
-		out.println("<td>Nombre</td><td>Descripcion</td><td>valor</td><td></td>");
+		out.println("<td>Nombre</td><td>Descripcion</td><td>Cantidad</td><td>Valor</td><td></td>");
 		out.println("</tr>");
 		out.println("</thead>");
 		out.println("<tbody>");
-
+		float total = 0;
 		String attrName;
 		Enumeration<String> attrNames = session.getAttributeNames();
 		while (attrNames.hasMoreElements()) {
@@ -59,12 +59,19 @@ public class ResumenSessionServlet extends HttpServlet {
 			out.println("<input type=\"hidden\" name=\"hAttrName\" value=\"" + miproducto.getNombre() + "\">");
 			out.println("</td>");
 			out.println("<td>" + miproducto.getDescripcion() + "</td>");
+			out.println("<td>" + miproducto.getCantidad() + "</td>");
 			out.println("<td>" + miproducto.getPrecio() + "</td>");
-			out.println("<td><a>Eliminar</a></td>");
+			out.println("<td><a onclick=\"eliminar_product_carrito(this)\">Eliminar</a></td>");
 			out.println("</tr>");
+			total += miproducto.getPrecio() * miproducto.getCantidad();
 		}
 		out.println("</tbody>");
 		out.println("</table>");
+		out.println("<h1>Total: <h1 id=\"total\">" + total + "</h1></h1>");
+		out.println("<a href=\"index.jsp\">Volver a comprar</a>");
+
+		out.println("<button onclick=\"confirmarCompra()\">Finalizar compra</button>");
+
 		out.close();
 	}
 
