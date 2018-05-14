@@ -74,6 +74,7 @@ function add(tag) {
 	var precio = $(tag).closest("tr").find("td:eq(2)").html();
 	var cant = $(tag).closest("tr").find("td:eq(3) [name=cantidad]").val();
 	sessionStorage.setItem(nombre, cant);
+	
 	$.ajax({
 		url : "http://localhost:8080/tp2-pdc/ProductosSessionServlet",
 		type : "post",
@@ -212,7 +213,7 @@ function procesarCompra(evt){
 	var apellido = $("#iapellido").val();
 	var mail = $("#imail").val();
 	
-	if( $("[name=recordar]:checked").val() == "SI"){
+	if( $("[name=recordar]:checked").length > 0	){
 		$.ajax({
 			url : "http://localhost:8080/tp2-pdc/FinalizarCompraServlet",
 			type : "post",

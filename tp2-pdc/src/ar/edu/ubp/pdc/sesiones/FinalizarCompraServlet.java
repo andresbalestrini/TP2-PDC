@@ -37,22 +37,31 @@ public class FinalizarCompraServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		PrintWriter out = response.getWriter();
 
+		String nombre = "", apellido = "", mail = "";
+
 		Cookie cookies[] = request.getCookies();
 		if (cookies != null) {
-			for (Cookie c : cookies) {
-				System.out.println("cookie name:" + c.getName());
-				System.out.println("cookie value:" + c.getValue());
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("cnombre")) {
+					nombre = cookie.getValue();
+				}
+				if (cookie.getName().equals("capellido")) {
+					apellido = cookie.getValue();
+
+				}
+				if (cookie.getName().equals("cmail")) {
+					mail = cookie.getValue();
+				}
 			}
 		}
 
 		out.println("<form action=\"javascript:void(null)\" onsubmit=\"procesarCompra(event)\">");
-		out.println("<label>Nombre:<input id=\"inombre\" type=\"text\" name=\"nombre\" ></label>");
-		out.println("<label>Apellido:<input id=\"iapellido\" type=\"text\" name=\"apellido\" ></label>");
-		out.println("<label>mail:<input id=\"imail\" type=\"text\" name=\"mail\"></label>");
-		out.println("<label>recordar datos?</label>");
+		out.println("<label>Nombre:<input id=\"inombre\" type=\"text\" name=\"nombre\" value=" + nombre + " ></label>");
+		out.println("<label>Apellido:<input id=\"iapellido\" type=\"text\" name=\"apellido\" value=" + apellido
+				+ " ></label>");
+		out.println("<label>mail:<input id=\"imail\" type=\"text\" name=\"mail\" value=" + mail + "></label>");
 		out.println(
-				"<label> Si<input id=\"irecordar-si\" type=\"radio\" name=\"recordar\" value=\"SI\" checked> </label>");
-		out.println("<label> No<input id=\"irecordar-no\" type=\"radio\" name=\"recordar\" value=\"NO\"> </label>");
+				"<label> Recordar datos? <input id=\"irecordar\" type=\"checkbox\" name=\"recordar\" checked></label>");
 		out.println("<button type=\"submit\" name=\"button\" id=\"ibutton\"> Confirmar pedido </button>");
 		out.println("</form>");
 		out.close();
@@ -78,17 +87,24 @@ public class FinalizarCompraServlet extends HttpServlet {
 			String apellido = request.getParameter("apellido");
 			String mail = request.getParameter("mail");
 
-			Cookie cookies[] = request.getCookies();
-			if (cookies != null) {
-				for (Cookie c : cookies) {
-					System.out.println("cookie name:" + c.getName());
-					System.out.println("cookie value:" + c.getValue());
-					c = new Cookie(c.getName(), "");
-					c.setMaxAge(0);
-					response.addCookie(c);
+			Cookie cooknombre = new Cookie("cnombre", nombre); // hacer constante el nombre de las cookies
+			Cookie cookapellido = new Cookie("capellido", apellido);
+			Cookie cookmail = new Cookie("cmail", mail);
 
-				}
-			}
+			response.addCookie(cooknombre);
+			response.addCookie(cookapellido);
+			response.addCookie(cookmail);
+
+			// if (cookies != null) {
+			// for (Cookie c : cookies) {
+			// System.out.println("cookie name:" + c.getName());
+			// System.out.println("cookie value:" + c.getValue());
+			// c = new Cookie(c.getName(), "");
+			// c.setMaxAge(0);
+			// response.addCookie(c);
+			//
+			// }
+			// }
 			// String value = nombre + apellido + mail;
 			// System.out.println(value);
 			// Cookie co = new Cookie("JSESSIONID", "");

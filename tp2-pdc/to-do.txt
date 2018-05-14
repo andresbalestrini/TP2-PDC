@@ -1,0 +1,5 @@
+1) revisar que el sessionstorage cuando se abre otra pestaña al apretar "finalizar compra" muestra los productos
+de la otra pestaña. 
+Para solucionar esto tenemos dos opciones:
+	- Interactuar con el servlet y preguntar si hay información seleccionada por el usuario en la session(del lado del servidor)
+	- crear en localstorage del navegador una variable como array que mantenga la informacion del carrito
