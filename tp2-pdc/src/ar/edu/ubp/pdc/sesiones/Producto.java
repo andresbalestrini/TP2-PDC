@@ -1,13 +1,15 @@
 package ar.edu.ubp.pdc.sesiones;
 
 public class Producto {
+	private int id;
 	private String nombre;
 	private String descripcion;
 	private int cantidad;
 	private float precio;
 
-	public Producto(String nom, String desc, float valor, int cantidad) {
+	public Producto(int id, String nom, String desc, float valor, int cantidad) {
 		super();
+		this.id = id;
 		this.nombre = nom;
 		this.descripcion = desc;
 		this.precio = valor;
@@ -16,6 +18,14 @@ public class Producto {
 
 	public Producto() {
 		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNombre() {

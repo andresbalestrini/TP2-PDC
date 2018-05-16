@@ -56,7 +56,7 @@ public class ResumenSessionServlet extends HttpServlet {
 			out.println("<tr>");
 			out.println("<td>");
 			out.println(miproducto.getNombre());
-			out.println("<input type=\"hidden\" name=\"hAttrName\" value=\"" + miproducto.getNombre() + "\">");
+			out.println("<input type=\"hidden\" name=\"hAttrName\" value=\"" + miproducto.getId() + "\">");
 			out.println("</td>");
 			out.println("<td>" + miproducto.getDescripcion() + "</td>");
 			out.println("<td>" + miproducto.getCantidad() + "</td>");

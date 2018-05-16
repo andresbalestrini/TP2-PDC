@@ -1,5 +1,66 @@
 1) revisar que el sessionstorage cuando se abre otra pestaña al apretar "finalizar compra" muestra los productos
 de la otra pestaña. 
 Para solucionar esto tenemos dos opciones:
-	- Interactuar con el servlet y preguntar si hay información seleccionada por el usuario en la session(del lado del servidor)
-	- crear en localstorage del navegador una variable como array que mantenga la informacion del carrito
+	a) Interactuar con el servlet y preguntar si hay información seleccionada por el usuario en la session(del lado del servidor)
+	b) crear en localstorage del navegador una variable como array que mantenga la informacion del carrito
+	
+En la opcion b) tenemos problemas para guardarlos, Junior propuso agregar ids yo hice esto
+var array = [ {
+            "id":1,
+			"nombre" : "Medias",
+			"desc" : "Medias de boca juniors",
+			"precio" : 33.00
+		}, {
+            "id":2,
+			"nombre" : "Buzo",
+			"desc" : "Buzo de boca juniors",
+			"precio" : 100.00
+		}, {
+            "id":3,
+			"nombre" : "Remera",
+			"desc" : "Remera de boca juniors",
+			"precio" : 500.50
+		}, {
+            "id":4,
+			"nombre" : "Pantalones",
+			"desc" : "pantalones de boca juniors",
+			"precio" : 200.00
+		}, {
+            "id":5,
+			"nombre" : "Botines",
+			"desc" : "botines de boca juniors",
+			"precio" : 1200.99
+		} ];
+
+var filtered = array.filter(producto => producto.id == "1"); // si no encuentra ninguno retorna un array vacio
+
+otra opcion es:
+
+var array = [{
+		"1": {
+			"nombre": "buzo",
+			"descripcion": "buzo de boca",
+			"precio": 300.55
+		}
+	},
+	{
+		"4": {
+			"nombre": "campera",
+			"descripcion": "campera de boca",
+			"precio": 400.55
+		}
+	},
+	{
+		"2": {
+			"nombre": "medias",
+			"descripcion": "medias de boca",
+			"precio": 110.55
+		}
+
+	}
+]
+
+16/05/18
+
+hay que eliminar de localStorage el item "carrito" una vez que vuelve todo a comenzar xq sino quedan items 
+como agreagados.
