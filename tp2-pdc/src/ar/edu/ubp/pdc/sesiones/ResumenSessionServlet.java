@@ -78,8 +78,8 @@ public class ResumenSessionServlet extends HttpServlet {
 		out.println("</div>");
 		out.println("<h1>Total: <h1 id=\"total\">" + total + "</h1></h1>");
 		out.println("<a href=\"index.jsp\">Volver a comprar</a>");
-
-		out.println("<button onclick=\"confirmarCompra()\">Finalizar compra</button>");
+		out.println(
+				"<button onclick=\"confirmarCompra()\" id=\"ifinalizar-compra\" class=\"btn btn-primary\">Finalizar compra</button>");
 
 		out.close();
 	}

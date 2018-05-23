@@ -125,7 +125,6 @@
         e.stopPropagation();
     });
 
-
     /*==================================================================
     [ Isotope ]*/
     var $topeContainer = $('.isotope-grid');

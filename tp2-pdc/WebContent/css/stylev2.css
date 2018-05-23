@@ -1,0 +1,48 @@
+.color-red {
+	color: #C70039
+}
+
+.menu-item {
+	border: 1px solid #ABB2B9;
+	background: white;
+	padding: 1em;
+}
+
+.section-menu {
+	background-color: #f3f3f3;
+}
+
+.section-form {
+	
+}
+
+.cover {
+	display: block;
+	margin-rigth: auto;
+	margin-left: auto;
+}
+
+.bd-example-modal-lg .modal-dialog {
+	display: table;
+	position: relative;
+	margin: 0 auto;
+	top: calc(50% - 24px);
+}
+
+.bd-example-modal-lg .modal-dialog .modal-content {
+	background-color: transparent;
+	color: #ffc107;
+	border: none;
+}
+
+.descripcion {
+	line-height: 1.45;
+	font-family: "sans serif";
+	font-weight: 400;
+}
+
+.button-disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Mercado Velociraptor</title>
 <script type="text/javascript" src="./js/jquery.js"></script>
-<script type="text/javascript" src="./js/controlsv1.js"></script>
+<script type="text/javascript" src="./js/controlsv2.js"></script>
 
 <title>Home</title>
 <meta charset="UTF-8">
@@ -49,8 +49,8 @@
 	href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="css/util.css">
-<link rel="stylesheet" type="text/css" href="css/mainv1.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/mainv3.css">
+<link rel="stylesheet" type="text/css" href="css/stylev2.css">
 <!--===============================================================================================-->
 
 
@@ -96,7 +96,6 @@
 									<li><a href="home-02.html">Homepage 2</a></li>
 									<li><a href="home-03.html">Homepage 3</a></li>icon-header-noti
 								</ul></li>
-
 							<li><a href="product.html">Shop</a></li>
 
 							<li class="label1" data-label1="hot"><a
@@ -216,12 +215,12 @@
 					<img src="images/icons/icon-close2.png" alt="CLOSE">
 				</button>
 
-				<form class="wrap-search-header flex-w p-l-15">
+				<form class="wrap-search-header flex-w p-l-15" action="javascript:void(null)" onsubmit="buscarProducto();">
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
-					<input class="plh3" type="text" name="search"
-						placeholder="Search...">
+					<input class="plh3" type="text" name="search" id="i-search"
+						placeholder="Search..." value="">
 				</form>
 			</div>
 		</div>
@@ -302,7 +301,7 @@
 		<div class="wrap-slick1">
 			<div class="slick1">
 				<div class="item-slick1"
-					style="background-image: url(images/slide-01.jpg);">
+					style="background-image: url(images/menu/c4.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false"
@@ -328,7 +327,7 @@
 				</div>
 
 				<div class="item-slick1"
-					style="background-image: url(images/slide-02.jpg);">
+					style="background-image: url(images/menu/c7.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false"
@@ -353,7 +352,7 @@
 				</div>
 
 				<div class="item-slick1"
-					style="background-image: url(images/slide-03.jpg);">
+					style="background-image: url(images/menu/c6.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false"
@@ -389,7 +388,7 @@
 	<!-- ************************************************************************************* -->
 	<!-- ************************************************************************************* -->
 
-	<section class="bg0 p-t-23 p-b-140 section-producto">
+	<section id="isection-producto" class="bg0 p-t-23 p-b-140 section-producto">
 		<div class="container">
 			<div class="row">
 				<div id="iproducto"></div>
@@ -407,7 +406,7 @@
 	<!-- ************************************************************************************* -->
 	<!-- ************************************************************************************* -->
 
-	<section class="bg0 p-t-23 p-b-140 section-menu">
+	<section id="isection-menu" class="bg0 p-t-23 p-b-140 section-menu">
 		<div class="container">
 
 			<div class="row">
@@ -420,17 +419,17 @@
 						<li class="nav-item site-animate"><a class="nav-link active"
 							id="pills-breakfast-tab" data-toggle="pill"
 							href="#pills-breakfast" role="tab"
-							aria-controls="pills-breakfast" aria-selected="true">Breakfast</a>
+							aria-controls="pills-breakfast" aria-selected="true">Hamburguesas</a>
 						</li>
 
 						<li class="nav-item site-animate"><a class="nav-link"
 							id="pills-lunch-tab" data-toggle="pill" href="#pills-lunch"
-							role="tab" aria-controls="pills-lunch" aria-selected="false">Lunch</a>
+							role="tab" aria-controls="pills-lunch" aria-selected="false">Pizzas</a>
 						</li>
 
 						<li class="nav-item site-animate"><a class="nav-link"
 							id="pills-dinner-tab" data-toggle="pill" href="#pills-dinner"
-							role="tab" aria-controls="pills-dinner" aria-selected="false">Dinner</a>
+							role="tab" aria-controls="pills-dinner" aria-selected="false">Bebidas</a>
 						</li>
 					</ul>
 
@@ -443,21 +442,21 @@
 							role="tabpanel" aria-labelledby="pills-breakfast-tab">
 							<div class="row">
 								<div class="col-md-6 site-animate items-hamburguesas"></div>
-								<div class="col-md-6 site-animate items-hamburguesas"></div>
+								<div class="col-md-6 site-animate items-hamburguesas-1"></div>
 							</div>
 						</div>
 						<div class="tab-pane fade" id="pills-lunch" role="tabpanel"
 							aria-labelledby="pills-lunch-tab">
 							<div class="row">
 								<div class="col-md-6 site-animate items-pizzas"></div>
-								<div class="col-md-6 site-animate items-pizzas"></div>
+								<div class="col-md-6 site-animate items-pizzas-1"></div>
 							</div>
 						</div>
 						<div class="tab-pane fade" id="pills-dinner" role="tabpanel"
 							aria-labelledby="pills-dinner-tab">
 							<div class="row">
 								<div class="col-md-6 site-animate items-bebidas"></div>
-								<div class="col-md-6 site-animate items-bebidas"></div>
+								<div class="col-md-6 site-animate items-bebidas-1"></div>
 							</div>
 						</div>
 					</div>
@@ -858,7 +857,14 @@
 		});
 	</script>
 	<!--===============================================================================================-->
-	<script src="js/mainv1.js"></script>
+	<script src="js/mainv2.js"></script>
+	<div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+	    <div class="modal-dialog modal-sm">
+	        <div class="modal-content" style="width: 48px">
+	            <span class="fa fa-spinner fa-spin fa-3x"></span>
+	        </div>
+	    </div>
+	</div>
 
 	<!-- <div id="grilla">
 		<button onclick="resumen()">Finalizar compra</button>
@@ -867,6 +873,8 @@
 		crear_productos()
 	</script> -->
 	<div id="carrito" class="container"></div>
+	<div id="formulario" class="container"></div>
+	<div id="error" class="container"></div>
 	<script type="text/javascript">
 		crear_productos()
 	</script>
